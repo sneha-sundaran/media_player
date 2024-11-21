@@ -72,7 +72,7 @@ catch(err){
             <td>{item?.caption}</td>
             <td><a href={item?.YoutubeLink} target='_blank'>{item?.YoutubeLink}</a></td>
             <td>{item?.formateData}</td>
-            <td><button onClick={()=>delHistory(item?.id)}><i  className="fa-solid fa-trash"></i></button></td>
+            <td><button style={{backgroundColor:'transparent' ,border:'none',color:'white '}} onClick={()=>delHistory(item?.id)}><i  className="fa-solid fa-trash"></i></button></td>
           </tr>
 
           )):

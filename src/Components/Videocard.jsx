@@ -6,11 +6,13 @@ import { Card } from 'react-bootstrap'
 import { deleteVideo, saveHistory } from '../service/allAppi';
 
  
-function Videocard({displayData,setDeleteVideoResponse}) {
+function Videocard({displayData,setDeleteVideoResponse,insideCategory}) {
   
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
+
+    
     const handleShow = async()  =>
       {
         const {caption,YoutubeLink}=displayData
@@ -46,16 +48,37 @@ function Videocard({displayData,setDeleteVideoResponse}) {
       }
 
     }
+    const dragStarted=(e,videoId)=>{
+      console.log(`video card draged video id ${videoId}`);
+      e.dataTransfer.setData("videoId",videoId)
+
+      
+      
+
+
+
+    }
   return (
-    <>
     
-     <Card style={{ width: '11rem', height:'14rem'}}>
+    <>
+
+    
+     <Card draggable={true} onDragStart={(e)=>dragStarted(e,displayData.id)} style={{ width: '11rem', height:'14rem'}}>
       <Card.Img variant="top" src={displayData?.imageUrl} onClick={handleShow} style={{height:'10rem', width:'11rem'}} />
       <Card.Body>
       
         <Card.Text>
          
-        <h5 className='text-white ' style={{}}>{displayData?.caption} <i className="fa-solid fa-trash" style={{fontSize:'19px'}} onClick={()=>handleRmovevideo(displayData?.id)}></i></h5>
+        <h5 className='text-white ' style={{}}>{displayData?.caption}
+
+
+
+{
+  !insideCategory&&
+   <button style={{fontSize:'19px',backgroundColor:'transparent',border:'none',color:'red'}} onClick={()=>handleRmovevideo(displayData?.id)}><i className="fa-solid fa-trash" ></i></button>
+
+}        
+  </h5>
         </Card.Text>
       </Card.Body>
     </Card>

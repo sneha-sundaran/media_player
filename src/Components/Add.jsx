@@ -3,9 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { FloatingLabel, Form } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { addVideo } from '../service/allAppi';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -14,6 +13,7 @@ import { addVideo } from '../service/allAppi';
 function Add({setaddVideoResponse}) {
 
 const[videoDetails,setVideoDetails]=useState({caption:"",imageUrl:"",YoutubeLink:""})
+
 console.log(videoDetails);
 
 
@@ -55,6 +55,7 @@ console.log(videoDetails);
       if(result.status>=200 && result.status <300){
         toast.success(`${result.data.caption} added` )
         handleClose()
+        setVideoDetails("")
       }
       
 
@@ -146,8 +147,7 @@ console.log(videoDetails);
     </Modal.Footer>
    
   </Modal>
-  <ToastContainer position="top-right" autoClose={5000}
-theme="colored"/>
+
 
   </>
   )

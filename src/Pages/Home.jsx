@@ -8,6 +8,10 @@ import Category from '../Components/Category'
 
 function Home() {
   const [addVideoResponse,setaddVideoResponse]=useState('')
+  const [ deleteVideoCategoryResponse,setDeleteVideoCategoryResponse]=useState("")
+  const[deletevideoviewresponse,setdeletevideoviewresponse]=useState('')
+
+
   return (
   <>
 
@@ -24,13 +28,13 @@ function Home() {
 
           <div className="row">
             <div className="col-6">
-            <h4 className='text-White'>All videos</h4>
-            <View addVideoResponse={addVideoResponse} />
+            <h4 className='text-white'>All videos</h4>
+            <View addVideoResponse={addVideoResponse} deleteVideoCategoryResponse={deleteVideoCategoryResponse} setdeletevideoviewresponse={setdeletevideoviewresponse}/>
             
 
             </div>
             <div className="col-6">
-            < Category/>
+            < Category setDeleteVideoCategoryResponse={setDeleteVideoCategoryResponse} deletevideoviewresponse={deletevideoviewresponse}/>
               
             
               </div>
